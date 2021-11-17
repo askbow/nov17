@@ -1,0 +1,16 @@
+---
+language: "python"
+python:
+  - "3.7"
+
+# like we did at the start, the new containers need all our packages
+install:
+  - "pip install -r requirements.txt"
+
+# no point in testing ansible if we have syntax errors
+before_script:
+  - "yamllint --strict *.yml"
+
+# run our test script
+script:
+  - "ansible-playbook test.yml"
